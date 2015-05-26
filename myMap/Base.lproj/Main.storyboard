@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="myMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,58 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orD-jK-dkF">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Zoom" id="2Xa-eo-Beg">
+                                        <connections>
+                                            <action selector="zoomIn:" destination="BYZ-38-t0r" id="n8v-gR-KSD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Type" id="VYG-WL-DOC">
+                                        <connections>
+                                            <action selector="changeMapType:" destination="BYZ-38-t0r" id="mNp-ec-BB3"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Local Search. Example: Pizza" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tIE-ro-Suk">
+                                <rect key="frame" x="125" y="20" width="350" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="uXU-FW-Kb1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldReturn:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="Xya-C5-DWI"/>
+                                </connections>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Oxe-fw-Cbd">
+                                <rect key="frame" x="0.0" y="58" width="600" height="498"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="orD-jK-dkF" firstAttribute="top" secondItem="Oxe-fw-Cbd" secondAttribute="bottom" id="DiN-FS-3tt"/>
+                            <constraint firstItem="Oxe-fw-Cbd" firstAttribute="top" secondItem="tIE-ro-Suk" secondAttribute="bottom" constant="8" symbolic="YES" id="Kmi-0S-1qi"/>
+                            <constraint firstItem="tIE-ro-Suk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OJ9-SM-sfh"/>
+                            <constraint firstItem="Oxe-fw-Cbd" firstAttribute="trailing" secondItem="orD-jK-dkF" secondAttribute="trailing" id="cvY-yi-AxU"/>
+                            <constraint firstItem="Oxe-fw-Cbd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f0K-t2-a32"/>
+                            <constraint firstItem="tIE-ro-Suk" firstAttribute="centerX" secondItem="Oxe-fw-Cbd" secondAttribute="centerX" id="kpq-EP-5qL"/>
+                            <constraint firstItem="orD-jK-dkF" firstAttribute="leading" secondItem="Oxe-fw-Cbd" secondAttribute="leading" id="lS4-Xg-wDR"/>
+                            <constraint firstItem="orD-jK-dkF" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="mcb-MD-A5Z"/>
+                            <constraint firstAttribute="trailing" secondItem="Oxe-fw-Cbd" secondAttribute="trailing" id="rkn-ic-bOq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="Oxe-fw-Cbd" id="ahp-0O-dEO"/>
+                        <outlet property="searchText" destination="tIE-ro-Suk" id="6T8-dG-DF6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="279" y="341"/>
         </scene>
     </scenes>
 </document>
